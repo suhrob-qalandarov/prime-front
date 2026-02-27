@@ -58,17 +58,6 @@
             padding-right: 200px;
         }
 
-        @media (max-width: 768px) {
-            .container-custom {
-                padding-left: 15px;
-                padding-right: 15px;
-            }
-
-            body {
-                padding-bottom: 140px;
-            }
-        }
-
         /* ======================================================
            HEADER STYLES - DESKTOP
         ====================================================== */
@@ -147,16 +136,22 @@
             text-shadow: none;
         }
 
+        /* Navigation underline - qizil rang (default) */
         .navbar-nav .nav-link::after {
             content: "";
             position: absolute;
-            bottom: 10px;
+            bottom: 5px;
             left: 50%;
             width: 0;
             height: 2px;
-            background: var(--light-color);
+            background: #dc3545;
             transition: all 0.3s ease;
             transform: translateX(-50%);
+        }
+
+        /* Navigation underline - oq rang (scrolled state) */
+        .main-header.scrolled-up .navbar-nav .nav-link::after {
+            background: var(--light-color);
         }
 
         .navbar-nav .nav-link:hover::after {
@@ -335,7 +330,8 @@
             position: relative;
         }
 
-        .bottom-nav-item i {
+        .bottom-nav-item i,
+        .bottom-nav-item svg {
             font-size: 20px;
             margin-bottom: 5px;
         }
@@ -413,19 +409,13 @@
             margin-top: 0;
         }
 
-        @media (min-width: 768px) {
-            .hero-section {
-                height: 650px;
-            }
-        }
-
         .hero-slider {
             height: 100%;
             position: relative;
         }
 
         .hero-slide {
-            height: 100%;
+            height: 80%;
             width: 100%;
             position: absolute;
             top: 0;
@@ -446,8 +436,8 @@
         .hero-content {
             position: relative;
             z-index: 3;
-            max-width: 1000px; /* 2x katta (500px dan 1000px) */
-            padding: 20px 40px; /* height 20px kichik (40px dan 20px) */
+            max-width: 1000px;
+            padding: 20px 40px;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(15px);
             border-radius: var(--border-radius);
@@ -467,33 +457,12 @@
             text-align: right;
         }
 
-        @media (max-width: 768px) {
-            .hero-content {
-                max-width: 90%;
-                padding: 20px 30px;
-            }
-
-            .hero-content.left,
-            .hero-content.right {
-                margin-left: 15px;
-                margin-right: 15px;
-                text-align: center;
-            }
-        }
-
         .hero-title {
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 20px;
             color: white;
             line-height: 1.2;
-        }
-
-        @media (min-width: 768px) {
-            .hero-title {
-                font-size: 3.5rem;
-                margin-bottom: 25px;
-            }
         }
 
         .hero-text {
@@ -535,22 +504,6 @@
 
         .hero-nav.next {
             right: 30px;
-        }
-
-        @media (max-width: 768px) {
-            .hero-nav {
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
-            }
-
-            .hero-nav.prev {
-                left: 15px;
-            }
-
-            .hero-nav.next {
-                right: 15px;
-            }
         }
 
         /* ======================================================
@@ -640,7 +593,6 @@
             text-align: center;
         }
 
-        /* Remove category button */
         .category-btn {
             display: none;
         }
@@ -669,8 +621,8 @@
         }
 
         /* ======================================================
-               FOOTER STYLES
-            ====================================================== */
+           FOOTER STYLES
+        ====================================================== */
         .footer {
             background: linear-gradient(135deg, var(--burgundy-color), var(--burgundy-light));
             color: var(--light-color);
@@ -765,54 +717,6 @@
         }
 
         /* ======================================================
-           RESPONSIVE STYLES
-        ====================================================== */
-        @media (max-width: 768px) {
-            .main-header {
-                display: none;
-            }
-
-            .top-header {
-                display: none;
-            }
-
-            .mobile-header {
-                display: block;
-            }
-
-            .mobile-bottom-nav {
-                display: block;
-            }
-
-            .hero-section {
-                margin-top: 60px;
-                height: 400px;
-            }
-
-            .category-section {
-                padding: 50px 0;
-            }
-
-            .footer {
-                padding: 40px 0 20px;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
-            }
-
-            .payment-methods {
-                justify-content: center;
-            }
-
-            .category-card {
-                height: 200px;
-            }
-        }
-
-        /* ======================================================
            CART DROPDOWN STYLES
         ====================================================== */
         .cart-dropdown {
@@ -862,7 +766,7 @@
 
         /* ======================================================
            PRODUCTS SECTION
-    ====================================================== */
+        ====================================================== */
         .products-section {
             padding: 40px 0 20px;
             background-color: #ffffff;
@@ -1037,9 +941,397 @@
             object-fit: cover;
         }
 
-        @media (max-width: 768px) {
+        /* ======================================================
+           RESPONSIVE STYLES
+        ====================================================== */
+
+        /* Mobil telefonlar */
+        @media (max-width: 480px) {
+            .container-custom {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            body {
+                padding-bottom: 80px;
+            }
+
+            .main-header {
+                display: none;
+            }
+
+            .top-header {
+                display: none;
+            }
+
+            .mobile-header {
+                display: block;
+            }
+
+            .mobile-bottom-nav {
+                display: block;
+            }
+
+            .hero-section {
+                margin-top: 60px;
+                height: 300px;
+            }
+
+            .hero-content {
+                max-width: 95%;
+                padding: 15px 20px;
+                margin-left: 10px !important;
+                margin-right: 10px !important;
+                text-align: center !important;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+                margin-bottom: 15px;
+            }
+
+            .hero-text {
+                font-size: 14px;
+                margin-bottom: 20px;
+            }
+
+            .hero-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            .hero-nav.prev {
+                left: 10px;
+            }
+
+            .hero-nav.next {
+                right: 10px;
+            }
+
+            .category-card {
+                height: 150px;
+            }
+
+            .category-title {
+                font-size: 1.2rem;
+            }
+
+            .products-section {
+                padding: 20px 0;
+            }
+
+            .product-tabs .nav-pills .nav-link {
+                padding: 8px 15px;
+                margin: 0 5px;
+                font-size: 12px;
+            }
+
+            .product-img-container {
+                height: 200px;
+            }
+
+            .product-content {
+                padding: 15px;
+            }
+
+            .product-title {
+                font-size: 14px;
+            }
+
+            .new-price {
+                font-size: 16px;
+            }
+
+            .old-price {
+                font-size: 12px;
+            }
+
+            .footer {
+                padding: 30px 0 15px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .payment-methods {
+                justify-content: center;
+            }
+
+            .info-hero-img {
+                max-height: 200px;
+            }
+        }
+
+        /* Katta telefonlar va kichik planshetlar */
+        @media (min-width: 481px) and (max-width: 768px) {
+            .container-custom {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            body {
+                padding-bottom: 80px;
+            }
+
+            .main-header {
+                display: none;
+            }
+
+            .top-header {
+                display: none;
+            }
+
+            .mobile-header {
+                display: block;
+            }
+
+            .mobile-bottom-nav {
+                display: block;
+            }
+
+            .hero-section {
+                margin-top: 60px;
+                height: 400px;
+            }
+
+            .hero-content {
+                max-width: 90%;
+                padding: 20px 30px;
+                margin-left: 15px !important;
+                margin-right: 15px !important;
+                text-align: center !important;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+                margin-bottom: 20px;
+            }
+
+            .hero-text {
+                font-size: 16px;
+                margin-bottom: 25px;
+            }
+
+            .hero-nav {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+
+            .hero-nav.prev {
+                left: 15px;
+            }
+
+            .hero-nav.next {
+                right: 15px;
+            }
+
+            .category-card {
+                height: 200px;
+            }
+
+            .category-title {
+                font-size: 1.4rem;
+            }
+
+            .products-section {
+                padding: 30px 0;
+            }
+
+            .product-tabs .nav-pills .nav-link {
+                padding: 10px 20px;
+                margin: 0 8px;
+                font-size: 14px;
+            }
+
+            .product-img-container {
+                height: 240px;
+            }
+
+            .product-content {
+                padding: 20px;
+            }
+
+            .footer {
+                padding: 40px 0 20px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .payment-methods {
+                justify-content: center;
+            }
+
             .info-hero-img {
                 max-height: 250px;
+            }
+        }
+
+        /* Katta planshetlar va kichik noutbuklar */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container-custom {
+                padding-left: 50px;
+                padding-right: 50px;
+            }
+
+            .navbar-nav {
+                margin-left: -50px;
+            }
+
+            .hero-section {
+                height: 550px;
+            }
+
+            .hero-content {
+                max-width: 800px;
+                padding: 25px 35px;
+            }
+
+            .hero-content.left {
+                margin-left: 50px;
+            }
+
+            .hero-content.right {
+                margin-right: 50px;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .category-card {
+                height: 250px;
+            }
+
+            .product-carousel-nav {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+
+            .product-carousel-nav.prev {
+                left: -22px;
+            }
+
+            .product-carousel-nav.next {
+                right: -22px;
+            }
+
+            .info-hero-img {
+                max-height: 350px;
+            }
+        }
+
+        /* Noutbuk va kichik desktoplar */
+        @media (min-width: 1025px) and (max-width: 1440px) {
+            .container-custom {
+                padding-left: 100px;
+                padding-right: 100px;
+            }
+
+            .navbar-nav {
+                margin-left: -80px;
+            }
+
+            .hero-section {
+                height: 600px;
+            }
+
+            .hero-content {
+                max-width: 900px;
+                padding: 30px 40px;
+            }
+
+            .hero-content.left {
+                margin-left: 100px;
+            }
+
+            .hero-content.right {
+                margin-right: 100px;
+            }
+
+            .hero-title {
+                font-size: 3.2rem;
+            }
+
+            .category-card {
+                height: 260px;
+            }
+
+            .info-hero-img {
+                max-height: 380px;
+            }
+        }
+
+        /* Katta desktoplar */
+        @media (min-width: 1441px) {
+            .container-custom {
+                padding-left: 250px;
+                padding-right: 250px;
+            }
+
+            .navbar-nav {
+                margin-left: -150px;
+            }
+
+            .hero-section {
+                height: 700px;
+            }
+
+            .hero-content {
+                max-width: 1100px;
+                padding: 35px 45px;
+            }
+
+            .hero-content.left {
+                margin-left: 150px;
+            }
+
+            .hero-content.right {
+                margin-right: 150px;
+            }
+
+            .hero-title {
+                font-size: 3.8rem;
+            }
+
+            .category-card {
+                height: 320px;
+            }
+
+            .category-title {
+                font-size: 1.8rem;
+            }
+
+            .info-hero-img {
+                max-height: 450px;
+            }
+        }
+
+        /* Eski responsive styles - backup */
+        @media (max-width: 768px) {
+            .main-header {
+                display: none;
+            }
+
+            .top-header {
+                display: none;
+            }
+
+            .mobile-header {
+                display: block;
+            }
+
+            .mobile-bottom-nav {
+                display: block;
             }
         }
     </style>
@@ -1140,7 +1432,7 @@
                 </button>
             </div>
             <div class="col-6 text-center">
-                <a href="index.html" class="mobile-logo">PRIME77</a>
+                <a href="../index.html" class="mobile-logo">PRIME77</a>
             </div>
             <div class="col-3 text-end">
                 <a href="#" class="mobile-account">
@@ -1448,7 +1740,7 @@
 
 <!-- Info Hero Section -->
 <section class="info-hero-section">
-    <img src="info-hero.png" alt="Info Hero" class="info-hero-img">
+    <img src="../info-hero.png" alt="Info Hero" class="info-hero-img">
 </section>
 
 <!-- Footer -->
@@ -1495,8 +1787,8 @@
                     <div class="payment-methods">
                         <span>To'lov turlari:</span>
                         <div class="payment-images">
-                            <img src="click.webp" alt="Click" />
-                            <img src="payme.webp" alt="Payme" />
+                            <img src="../click.webp" alt="Click" />
+                            <img src="../payme.webp" alt="Payme" />
                         </div>
                     </div>
                 </div>

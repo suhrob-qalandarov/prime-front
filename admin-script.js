@@ -1,5 +1,5 @@
 // API Configuration
-const API_BASE_URL = "http://localhost:8080"
+const API_BASE_URL = ""
 
 // Global variables
 let allCategories = []
@@ -16,14 +16,14 @@ document.addEventListener("DOMContentLoaded", () => {
     loadDashboardData()
 })
 
-// Check authentication
+/*// Check authentication
 function checkAuth() {
     const token = localStorage.getItem("accessToken")
     if (!token) {
         window.location.href = "login.html"
         return
     }
-}
+}*/
 
 // Initialize admin panel
 function initializeAdminPanel() {
